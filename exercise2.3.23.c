@@ -7,7 +7,7 @@ typedef struct LNode{
 	int data;
 	struct LNode *link;
 }LNode, *LinkList;
-void DeleteAbs(LinkList &L) {
+void DeleteAbs(LinkList &L, int n) {
 	// p为工作指针,pre为p的前驱
 	LinkList *p = L->link, *pre = L;
 	// 用来记录p的data绝对值
