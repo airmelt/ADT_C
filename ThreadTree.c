@@ -49,12 +49,13 @@ ThreadNode *Nextnode(ThreadNode *p) {
 }
 // 求中序线索二叉树中中序序列下的最后一个结点
 ThreadNode *Lastnode(ThreadNode *p) {
-	while (p->rchild) p = p->rchild;
+	while (p->rtag == 0) p = p->rchild;
 	return p;
 }
 // 求中序线索二叉树中结点p在中序序列下的前驱结点
 ThreadNode *Prenode(ThreadNode *p) {
-	if (p->ltag == 0) return Firstnode(p->rchild);
+	// 如果有左孩子,前驱结点为左子树的最右结点
+	if (p->ltag == 0) return Lastnode(p->lchild);
 	// ltag == 1直接返回前驱线索
 	else return p->lchild;
 }
